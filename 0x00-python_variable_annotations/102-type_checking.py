@@ -5,6 +5,7 @@ This module provides a function to zoom an array by a given factor.
 
 from typing import List, Tuple, Any
 
+
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
     """
     Zoom in on an array by repeating its elements a specified number of times.
