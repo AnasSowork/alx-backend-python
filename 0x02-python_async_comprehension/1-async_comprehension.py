@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Module containing a coroutine that collects 10 random numbers using async comprehension.
+Module containing a coroutine that collects 10 random
+numbers using async comprehension.
 """
 
 import asyncio
@@ -16,5 +17,5 @@ async def async_comprehension() -> List[float]:
     Returns:
         List[float]: List of 10 random numbers.
     """
-    random_numbers = [num async for num in async_generator()]
+    random_numbers: List[float] = [num async for num in async_generator()]
     return random_numbers
