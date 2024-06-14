@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Module containing functions to create asyncio.Task objects
-for concurrent coroutines.
+Module containing functions to create asyncio.Task objects for
+concurrent coroutines.
 """
 
 import asyncio
@@ -18,8 +18,7 @@ async def task_wait_random(max_delay: int) -> asyncio.Task:
         max_delay (int): The maximum delay time in seconds.
 
     Returns:
-        asyncio.Task: The asyncio.Task object associated with
-        wait_random.
+        asyncio.Task: The asyncio.Task object associated with wait_random.
     """
     return asyncio.create_task(wait_random(max_delay))
 
@@ -39,5 +38,6 @@ async def task_wait_n(n: int, max_delay: int) -> List[float]:
         List[float]: List of delays in ascending order.
     """
     tasks = [task_wait_random(max_delay) for _ in range(n)]
-    delays = await asyncio.gather(*tasks)
+    await asyncio.gather(*tasks)  # Wait for all tasks to complete
+    delays = [task.result() for task in tasks]  # Get results from tasks
     return sorted(delays)
