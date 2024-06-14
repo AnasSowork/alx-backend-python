@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Module containing functions to create asyncio.Task objects for
-concurrent coroutines.
+Module containing functions to create asyncio.Task objects
+for concurrent coroutines.
 """
 
 import asyncio
@@ -9,18 +9,18 @@ from typing import List
 from basic_async_syntax import wait_random
 
 
-async def task_wait_random(max_delay: int) -> asyncio.Task:
+async def task_wait_random(max_delay: int) -> float:
     """
-    Creates and returns an asyncio.Task for the wait_random
-    coroutine with the specified max_delay.
+    Creates and runs the wait_random coroutine with the 
+    specified max_delay.
 
     Args:
         max_delay (int): The maximum delay time in seconds.
 
     Returns:
-        asyncio.Task: The asyncio.Task object associated with wait_random.
+        float: The delay returned by wait_random.
     """
-    return asyncio.create_task(wait_random(max_delay))
+    return await wait_random(max_delay)
 
 
 async def task_wait_n(n: int, max_delay: int) -> List[float]:
@@ -38,6 +38,5 @@ async def task_wait_n(n: int, max_delay: int) -> List[float]:
         List[float]: List of delays in ascending order.
     """
     tasks = [task_wait_random(max_delay) for _ in range(n)]
-    await asyncio.gather(*tasks)  # Wait for all tasks to complete
-    delays = [task.result() for task in tasks]  # Get results from tasks
-    return sorted(delays)
+    results = await asyncio.gather(*tasks)  # Wait for all tasks to complete and get results
+    return sorted(results)
