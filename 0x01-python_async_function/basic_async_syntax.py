@@ -5,9 +5,9 @@ Module for asynchronous coroutine to wait for a random delay.
 
 import asyncio
 import random
-from typing import Union
 
-async def wait_random(max_delay: int = 10) -> Union[float, int]:
+
+async def wait_random(max_delay: int = 10) -> float:
     """
     Waits for a random delay between 0 and max_delay seconds (inclusive)
     and returns the delay.
