@@ -8,7 +8,7 @@ import time
 from typing import List
 from asyncio import run
 
-# Import wait_n function from previous file
+
 from 1-concurrent_coroutines import wait_n
 
 
@@ -31,10 +31,3 @@ def measure_time(n: int, max_delay: int) -> float:
     avg_time_per_call = total_time / n
 
     return avg_time_per_call
-
-
-# Example usage
-if __name__ == "__main__":
-    n = 5
-    max_delay = 9
-    print(measure_time(n, max_delay))
