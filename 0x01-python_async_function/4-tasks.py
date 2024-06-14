@@ -11,7 +11,7 @@ from basic_async_syntax import wait_random
 
 async def task_wait_random(max_delay: int) -> float:
     """
-    Creates and runs the wait_random coroutine with the 
+    Creates and runs the wait_random coroutine with the
     specified max_delay.
 
     Args:
@@ -38,5 +38,5 @@ async def task_wait_n(n: int, max_delay: int) -> List[float]:
         List[float]: List of delays in ascending order.
     """
     tasks = [task_wait_random(max_delay) for _ in range(n)]
-    results = await asyncio.gather(*tasks)  # Wait for all tasks to complete and get results
+    results = await asyncio.gather(*tasks)  # Wait for all tasks
     return sorted(results)
